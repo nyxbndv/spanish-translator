@@ -9,4 +9,4 @@ services:
     environment:
       - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
       - CLAUDE_MODEL=claude-sonnet-4-6
-      - MAX_TOKENS=1000
+      - MAX_TOKENS=2000

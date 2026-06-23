@@ -7,7 +7,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 // ---- Config from environment ----
 const API_KEY = process.env.ANTHROPIC_API_KEY;
 const MODEL = process.env.CLAUDE_MODEL || "claude-sonnet-4-6";
-const MAX_TOKENS = parseInt(process.env.MAX_TOKENS || "1000", 10);
+const MAX_TOKENS = parseInt(process.env.MAX_TOKENS || "2000", 10);
 const PORT = parseInt(process.env.PORT || "3000", 10);
 
 const app = express();
@@ -75,7 +75,9 @@ app.post("/api/translate", async (req, res) => {
     try {
       parsed = JSON.parse(clean);
     } catch {
-      return res.status(502).json({ error: "Could not parse model response." });
+      console.error("Could not parse model response. Stop reason:", data.stop_reason, "\nRaw:", raw);
+      const hint = data.stop_reason === "max_tokens" ? " (response was truncated, try raising MAX_TOKENS)" : "";
+      return res.status(502).json({ error: `Could not parse model response.${hint}` });
     }
 
     res.json(parsed);
