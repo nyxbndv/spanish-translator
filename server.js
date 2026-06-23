@@ -46,6 +46,9 @@ app.post("/api/translate", async (req, res) => {
     return res.status(400).json({ error: "No text provided." });
   }
 
+  const startedAt = Date.now();
+  console.log(`[translate] direction=${direction || "en-es"} chars=${text.length}`);
+
   try {
     const r = await fetch("https://api.anthropic.com/v1/messages", {
       method: "POST",
@@ -63,10 +66,17 @@ app.post("/api/translate", async (req, res) => {
     });
 
     const data = await r.json();
+    const elapsedMs = Date.now() - startedAt;
 
     if (data.error) {
+      console.error(`[translate] API error after ${elapsedMs}ms:`, data.error.message);
       return res.status(502).json({ error: data.error.message || "Anthropic API error" });
     }
+
+    const usage = data.usage || {};
+    console.log(
+      `[translate] done in ${elapsedMs}ms | stop_reason=${data.stop_reason} | tokens in=${usage.input_tokens} out=${usage.output_tokens}`
+    );
 
     const raw = (data.content || []).map((i) => i.text || "").join("");
     const clean = raw.replace(/```json|```/g, "").trim();
@@ -75,13 +85,14 @@ app.post("/api/translate", async (req, res) => {
     try {
       parsed = JSON.parse(clean);
     } catch {
-      console.error("Could not parse model response. Stop reason:", data.stop_reason, "\nRaw:", raw);
+      console.error("[translate] Could not parse model response. Stop reason:", data.stop_reason, "\nRaw:", raw);
       const hint = data.stop_reason === "max_tokens" ? " (response was truncated, try raising MAX_TOKENS)" : "";
       return res.status(502).json({ error: `Could not parse model response.${hint}` });
     }
 
     res.json(parsed);
   } catch (e) {
+    console.error(`[translate] Server error after ${Date.now() - startedAt}ms:`, e.message);
     res.status(500).json({ error: e.message || "Server error" });
   }
 });
