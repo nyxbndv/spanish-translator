@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>spanish-translator</Name>
+  <Repository>spanish-translator:latest</Repository>
+  <Registry/>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support/>
+  <Project/>
+  <Overview>Self-hosted Spanish/English learning translator powered by the Claude API. Translates with full word-by-word breakdown, grammar notes, verb tense, and sentence structure lessons. Your API key stays server-side.</Overview>
+  <Category>Tools: Education:</Category>
+  <WebUI>http://[IP]:[PORT:3000]/</WebUI>
+  <TemplateURL/>
+  <Icon>https://raw.githubusercontent.com/anthropics/anthropic-sdk-typescript/main/.github/logo.png</Icon>
+  <ExtraParams/>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled/>
+  <DonateText/>
+  <DonateLink/>
+  <Description>Self-hosted Spanish/English learning translator powered by the Claude API. Translates with full word-by-word breakdown, grammar notes, verb tense, and sentence structure lessons. Your API key stays server-side and is never exposed to the browser.</Description>
+  <Networking>
+    <Mode>bridge</Mode>
+    <Publish>
+      <Port>
+        <HostPort>8500</HostPort>
+        <ContainerPort>3000</ContainerPort>
+        <Protocol>tcp</Protocol>
+      </Port>
+    </Publish>
+  </Networking>
+  <Data/>
+  <Environment>
+    <Variable>
+      <Value/>
+      <Name>ANTHROPIC_API_KEY</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value>claude-sonnet-4-20250514</Value>
+      <Name>CLAUDE_MODEL</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value>1000</Value>
+      <Name>MAX_TOKENS</Name>
+      <Mode/>
+    </Variable>
+  </Environment>
+  <Labels/>
+  <Config Name="WebUI Port" Target="3000" Default="8500" Mode="tcp" Description="Port the web UI is served on" Type="Port" Display="always" Required="true" Mask="false">8500</Config>
+  <Config Name="ANTHROPIC_API_KEY" Target="ANTHROPIC_API_KEY" Default="" Mode="" Description="Your Claude API key from console.anthropic.com" Type="Variable" Display="always" Required="true" Mask="true"/>
+  <Config Name="CLAUDE_MODEL" Target="CLAUDE_MODEL" Default="claude-sonnet-4-20250514" Mode="" Description="Claude model to use" Type="Variable" Display="always" Required="false" Mask="false">claude-sonnet-4-20250514</Config>
+  <Config Name="MAX_TOKENS" Target="MAX_TOKENS" Default="1000" Mode="" Description="Max tokens per translation response" Type="Variable" Display="advanced" Required="false" Mask="false">1000</Config>
+</Container>

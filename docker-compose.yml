@@ -1,0 +1,12 @@
+services:
+  spanish-translator:
+    build: .
+    image: spanish-translator:latest
+    container_name: spanish-translator
+    restart: unless-stopped
+    ports:
+      - "8500:3000"
+    environment:
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      - CLAUDE_MODEL=claude-sonnet-4-20250514
+      - MAX_TOKENS=1000
