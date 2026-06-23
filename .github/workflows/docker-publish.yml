@@ -24,5 +24,5 @@ jobs:
           context: .
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/spanish-translator:latest
-            ${{ secrets.DOCKERHUB_USERNAME }}/spanish-translator:${{ github.sha }}
+            nyxbndv/spanish-translator:latest
+            nyxbndv/spanish-translator:${{ github.sha }}
