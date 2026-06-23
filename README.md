@@ -16,7 +16,7 @@ browser ──> /api/translate ──> Express (holds key) ──> api.anthropic
 | Variable             | Required | Default                     | Notes                                  |
 |----------------------|----------|-----------------------------|----------------------------------------|
 | `ANTHROPIC_API_KEY`  | yes      | —                           | From console.anthropic.com             |
-| `CLAUDE_MODEL`       | no       | `claude-sonnet-4-20250514`  | Any model your key can access          |
+| `CLAUDE_MODEL`       | no       | `claude-sonnet-4-6`  | Any model your key can access          |
 | `MAX_TOKENS`         | no       | `1000`                      | Max tokens per response                |
 | `PORT`               | no       | `3000`                      | In-container port                      |
 

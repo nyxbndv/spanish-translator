@@ -6,7 +6,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // ---- Config from environment ----
 const API_KEY = process.env.ANTHROPIC_API_KEY;
-const MODEL = process.env.CLAUDE_MODEL || "claude-sonnet-4-20250514";
+const MODEL = process.env.CLAUDE_MODEL || "claude-sonnet-4-6";
 const MAX_TOKENS = parseInt(process.env.MAX_TOKENS || "1000", 10);
 const PORT = parseInt(process.env.PORT || "3000", 10);
 

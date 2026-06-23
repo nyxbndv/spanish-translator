@@ -39,7 +39,7 @@
       <Mode/>
     </Variable>
     <Variable>
-      <Value>claude-sonnet-4-20250514</Value>
+      <Value>claude-sonnet-4-6</Value>
       <Name>CLAUDE_MODEL</Name>
       <Mode/>
     </Variable>
@@ -52,6 +52,6 @@
   <Labels/>
   <Config Name="WebUI Port" Target="3000" Default="8500" Mode="tcp" Description="Port the web UI is served on" Type="Port" Display="always" Required="true" Mask="false">8500</Config>
   <Config Name="ANTHROPIC_API_KEY" Target="ANTHROPIC_API_KEY" Default="" Mode="" Description="Your Claude API key from console.anthropic.com" Type="Variable" Display="always" Required="true" Mask="true"/>
-  <Config Name="CLAUDE_MODEL" Target="CLAUDE_MODEL" Default="claude-sonnet-4-20250514" Mode="" Description="Claude model to use" Type="Variable" Display="always" Required="false" Mask="false">claude-sonnet-4-20250514</Config>
+  <Config Name="CLAUDE_MODEL" Target="CLAUDE_MODEL" Default="claude-sonnet-4-6" Mode="" Description="Claude model to use" Type="Variable" Display="always" Required="false" Mask="false">claude-sonnet-4-6</Config>
   <Config Name="MAX_TOKENS" Target="MAX_TOKENS" Default="1000" Mode="" Description="Max tokens per translation response" Type="Variable" Display="advanced" Required="false" Mask="false">1000</Config>
 </Container>
